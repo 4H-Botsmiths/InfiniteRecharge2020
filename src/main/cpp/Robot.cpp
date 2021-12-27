@@ -10,20 +10,21 @@
 #include <iostream>
 
 #include "Robot.h"
-
+//This is the Initialization class that gets things started.  Note the camera Server
 void Robot::RobotInit() {
     frc::CameraServer::GetInstance()->StartAutomaticCapture(0);
     frc::CameraServer::GetInstance()->StartAutomaticCapture(1);
-
+//Set all the drive motors to default.  North is the front of the robot
     motorNW.RestoreFactoryDefaults();
     motorNE.RestoreFactoryDefaults();
     motorSE.RestoreFactoryDefaults();
     motorSW.RestoreFactoryDefaults();
-
+//This fixes a known issue with the PCM not clearing faults
     driveRocker.ClearAllPCMStickyFaults();
 }
 
 void Robot::RobotPeriodic() {
+//The starDust is a base set of foundational calls that is part of the include     
     starDustRobot.RobotPeriodic();
 }
 
